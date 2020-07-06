@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Form, Button, Col, Row } from 'react-bootstrap';
-import DatePicker from 'react-datepicker';
+import React, { useState } from 'react'
+import { Form, Button, Col, Row } from 'react-bootstrap'
+import DatePicker from 'react-datepicker'
+import AppStorageManager from './AppStorageManager'
 
 function Options() {
   let arrayOptions: number[] = [];
@@ -24,9 +25,23 @@ export default function NewApp() {
   const [wayOfCommunication, setWayOfCommunication] = useState('email')
   const [startDate, setStartDate] = useState(new Date())
 
-
   function handleOnSubmit() {
+    //validation
+    const newApp = {
+      name,
+      email,
+      age,
+      phone,
+      englishLevel,
+      skills,
+      personal,
+      studyFromHome,
+      wayOfCommunication,
+      startDate
+    }
+    AppStorageManager.addApp(newApp)
   }
+
 
   return (
     <Form onSubmit={handleOnSubmit}>
