@@ -16,7 +16,7 @@ function App() {
             <Route path="/view">
               <ViewApps />
             </Route>
-            <Route path="/edit">
+            <Route path="/edit/:id">
               Edit
             </Route>
             <Route path="/">

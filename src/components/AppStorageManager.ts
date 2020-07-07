@@ -8,7 +8,7 @@ export interface Application {
   skills: string,
   personal: string,
   studyFromHome: boolean,
-  wayOfCommunication: string,
+  wayOfCommunication: 'phone' | 'email',
   startDate: Date
 }
 
