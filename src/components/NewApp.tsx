@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button, Col, Row } from 'react-bootstrap'
 import DatePicker from 'react-datepicker'
 import AppStorageManager from './AppStorageManager'
+import { v4 as uuidv4 } from 'uuid'
 
 function Options() {
   let arrayOptions: number[] = [];
@@ -24,10 +25,11 @@ export default function NewApp() {
   const [studyFromHome, setStudyFromHome] = useState(false)
   const [wayOfCommunication, setWayOfCommunication] = useState('email')
   const [startDate, setStartDate] = useState(new Date())
-
+  
   function handleOnSubmit() {
     //validation
     const newApp = {
+      id: uuidv4(),
       name,
       email,
       age,

@@ -1,4 +1,5 @@
 interface Application {
+  id: string,
   name: string,
   email: string,
   age: number,
@@ -12,18 +13,14 @@ interface Application {
 }
 
 export default class AppStorageManager {
-  
-  static getApp(email: string){
-    localStorage.getItem(email)
-  }
 
-  private static setAll(apps: Application[]){
+  private static setAll(apps: Application[]) {
     localStorage.setItem('applications', JSON.stringify(apps))
   }
 
   static getAll() {
-    const applications = localStorage.getItem('applications') || '[]'
-    return JSON.parse(applications) as Application[]
+    const applications = JSON.parse(localStorage.getItem('applications') || '[]') as any[]
+    return applications.map(app => ({ ...app, startDate: new Date(app.startDate) }) as Application)
   }
 
   static addApp(app: Application) {
@@ -33,11 +30,15 @@ export default class AppStorageManager {
   }
 
   static updateApp(app: Application) {
-    
+    const apps = this.getAll()
+    const index = apps.findIndex(a => a.id === app.id)
+    apps[index] = app
+    this.setAll(apps)
   }
 
-  static deleteApp(email: string) {
+  static deleteApp(id: string) {
     const apps = this.getAll()
-    this.setAll(apps.filter(app => app.email !== email))
+    const newApps = apps.filter(app => app.id !== id)
+    this.setAll(newApps)
   }
 }
