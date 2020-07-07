@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import NewApp from './components/NewApp'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container'
+import ViewApps from './components/ViewApps'
 
 function App() {
   return (
@@ -12,12 +13,15 @@ function App() {
         <Navbar />
         <Container>
           <Switch>
+            <Route path="/view">
+              <ViewApps />
+            </Route>
+            <Route path="/edit">
+              Edit
+            </Route>
             <Route path="/">
               <NewApp />
             </Route>
-            <Route path="/edit">
-              edit
-          </Route>
           </Switch>
         </Container>
       </div>

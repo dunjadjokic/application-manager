@@ -1,4 +1,4 @@
-interface Application {
+export interface Application {
   id: string,
   name: string,
   email: string,
