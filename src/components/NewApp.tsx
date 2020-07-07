@@ -25,7 +25,7 @@ export default function NewApp() {
   const [studyFromHome, setStudyFromHome] = useState(false)
   const [wayOfCommunication, setWayOfCommunication] = useState('email')
   const [startDate, setStartDate] = useState(new Date())
-  
+
   function handleOnSubmit() {
     //validation
     const newApp = {
@@ -47,30 +47,38 @@ export default function NewApp() {
 
   return (
     <Form onSubmit={handleOnSubmit}>
-      <Form.Group controlId="formBasicName">
-        <Form.Label>Name </Form.Label>
-        <Form.Control type="text" placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
+      <Form.Group as={Row} controlId="formBasicName">
+        <Form.Label column sm="2">Name </Form.Label>
+        <Col sm="10">
+          <Form.Control type="text" placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address </Form.Label>
-        <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+      <Form.Group as={Row} controlId="formBasicEmail">
+        <Form.Label column sm="2">Email address </Form.Label>
+        <Col sm="10">
+          <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Age </Form.Label>
-        <Form.Control as="select" onChange={e => setAge(parseInt(e.target.value))}>
-          <Options />
-        </Form.Control>
+      <Form.Group as={Row} controlId="exampleForm.ControlSelect1">
+        <Form.Label column sm="2">Age </Form.Label>
+        <Col sm="10">
+          <Form.Control as="select" onChange={e => setAge(parseInt(e.target.value))}>
+            <Options />
+          </Form.Control>
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="formBasicPhone">
-        <Form.Label>Phone number </Form.Label>
-        <Form.Control type="text" placeholder="Enter phone number" onChange={(e) => setPhone(e.target.value)} />
+      <Form.Group as={Row} controlId="formBasicPhone">
+        <Form.Label column sm="2">Phone number </Form.Label>
+        <Col sm="10">
+          <Form.Control type="text" placeholder="Enter phone number" onChange={(e) => setPhone(e.target.value)} />
+        </Col>
       </Form.Group>
 
       <Form.Group as={Row}>
-        <Form.Label as="legend" column>
+        <Form.Label as="legend" column sm="2">
           Preferred way of communication
       </Form.Label>
         <Col sm={10}>
@@ -95,34 +103,42 @@ export default function NewApp() {
           />
         </Col>
       </Form.Group>
-      <Form.Group controlId="formDate">
-        <Form.Label as="legend" column>Available to Start:  </Form.Label>
-        <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+      <Form.Group as={Row} controlId="formDate">
+        <Form.Label as="legend" column sm="2">Available to Start:  </Form.Label>
+        <Col sm="10">
+          <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="exampleForm.ControlSelect2">
-        <Form.Label>English level</Form.Label>
-        <Form.Control as="select" onChange={e => setEnglishLevel(e.target.value)}>
-          <option value='A1'>A1</option>
-          <option value='A2'>A2</option>
-          <option value='B1'>B1</option>
-          <option value='B2'>B2</option>
-          <option value='C1'>C1</option>
-          <option value='C2'>C2</option>
-        </Form.Control>
+      <Form.Group as={Row} controlId="exampleForm.ControlSelect2">
+        <Form.Label column sm="2">English level</Form.Label>
+        <Col sm="10">
+          <Form.Control as="select" onChange={e => setEnglishLevel(e.target.value)}>
+            <option value='A1'>A1</option>
+            <option value='A2'>A2</option>
+            <option value='B1'>B1</option>
+            <option value='B2'>B2</option>
+            <option value='C1'>C1</option>
+            <option value='C2'>C2</option>
+          </Form.Control>
+        </Col>
+      </Form.Group>
+ 
+      <Form.Group as={Row} controlId="exampleForm.ControlTextarea1">
+        <Form.Label column sm="2">Technical skills and courses </Form.Label>
+        <Col sm="10">
+          <Form.Control as="textarea" rows={3} onChange={(e) => setSkills(e.target.value)} />
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Technical skills and courses </Form.Label>
-        <Form.Control as="textarea" rows={3} onChange={(e) => setSkills(e.target.value)} />
+      <Form.Group as={Row} controlId="exampleForm.ControlTextarea2">
+        <Form.Label column sm="2">Short personal presentation </Form.Label>
+        <Col sm="10">
+          <Form.Control as="textarea" rows={3} onChange={(e) => setPersonal(e.target.value)} />
+        </Col>
       </Form.Group>
 
-      <Form.Group controlId="exampleForm.ControlTextarea2">
-        <Form.Label>Short personal presentation </Form.Label>
-        <Form.Control as="textarea" rows={3} onChange={(e) => setPersonal(e.target.value)} />
-      </Form.Group>
-
-      <Form.Group controlId="formBasicCheckbox">
+      <Form.Group as={Row} controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Study from home" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStudyFromHome(e.target.checked)} />
       </Form.Group>
 
