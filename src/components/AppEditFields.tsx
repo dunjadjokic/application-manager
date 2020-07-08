@@ -13,6 +13,10 @@ function EnglishLevelOptions() {
   return (<>{options}</>)
 }
 
+const RequiredAsterisk = () => (
+  <span className="required">*</span>
+)
+
 type EditProps = {
   app: Application,
   dispatch: React.Dispatch<EditAppAction>
@@ -23,7 +27,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
   return (
     <>
       <Form.Group as={Row} controlId="formBasicName">
-        <Form.Label column sm="2">Name </Form.Label>
+        <Form.Label column sm="2">Name <RequiredAsterisk /></Form.Label>
         <Col sm="10">
           <Form.Control
             pattern="([A-Z][a-zA-Z]+)(\s([A-Z][a-zA-Z]+))*"
@@ -36,7 +40,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
       </Form.Group>
 
       <Form.Group as={Row} controlId="formBasicEmail">
-        <Form.Label column sm="2">Email address </Form.Label>
+        <Form.Label column sm="2">Email address <RequiredAsterisk /></Form.Label>
         <Col sm="10">
           <Form.Control
             required
@@ -48,7 +52,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
       </Form.Group>
 
       <Form.Group as={Row} controlId="exampleForm.ControlSelect1">
-        <Form.Label column sm="2">Age </Form.Label>
+        <Form.Label column sm="2">Age <RequiredAsterisk /></Form.Label>
         <Col sm="10">
           <Form.Control
             required
@@ -61,13 +65,15 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
       </Form.Group>
 
       <Form.Group as={Row} controlId="formBasicPhone">
-        <Form.Label column sm="2">Phone number </Form.Label>
+        <Form.Label column sm="2">Phone number <RequiredAsterisk /></Form.Label>
         <Col sm="10">
           <Form.Control
             pattern="[+][0-9]+"
             required
             type="text"
             value={app.phone}
+            minLength={11}
+            maxLength={20}
             placeholder="Example: +38160123456"
             onChange={(e) => dispatch({ type: 'setPhone', payload: { phone: e.target.value } })} />
         </Col>
@@ -75,7 +81,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
 
       <Form.Group as={Row}>
         <Form.Label as="legend" column sm="2">
-          Preferred way of communication
+          Preferred way of communication <RequiredAsterisk />
       </Form.Label>
         <Col sm={10}>
           <Form.Check
@@ -102,7 +108,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         </Col>
       </Form.Group>
       <Form.Group as={Row} controlId="formDate">
-        <Form.Label as="legend" column sm="2">Available to Start:  </Form.Label>
+        <Form.Label as="legend" column sm="2">Available to Start: <RequiredAsterisk /></Form.Label>
         <Col sm="10">
           <DatePicker
             required

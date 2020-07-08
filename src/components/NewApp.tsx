@@ -4,6 +4,7 @@ import AppEditFields from './AppEditFields'
 import { reducer } from './EditApplicationState'
 import { Form, Button, Row } from 'react-bootstrap'
 import AppStorageManager from './AppStorageManager'
+import { useHistory } from 'react-router-dom'
 
 export default function NewApp() {
 
@@ -20,10 +21,12 @@ export default function NewApp() {
     wayOfCommunication: 'email',
     startDate: new Date()
   })
+  const history = useHistory()
 
   const handleSubmit = useCallback(() => {
     AppStorageManager.addApp(app)
-  }, [app])
+    history.push("/application-manager/view")
+  }, [app, history])
 
   return (
     <Form onSubmit={handleSubmit}>
