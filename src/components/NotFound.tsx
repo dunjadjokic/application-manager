@@ -1,7 +1,9 @@
 import React from 'react'
 
 export function NotFound() {
-    return (
-        <img height="100%" width="100%" alt="404_not_found" src="/404_not_found.webp" />
-    )
+  return (
+    <div className="not-found-image">
+      <img alt="" src="/application-manager/404_not_found.webp" />
+    </div>
+  )
 } 

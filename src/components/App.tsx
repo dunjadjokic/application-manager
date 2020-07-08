@@ -2,7 +2,7 @@ import React from 'react';
 //import './App.css';
 import NavigationBar from './NavigationBar';
 import NewApp from './NewApp'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Container from 'react-bootstrap/Container'
 import ViewApps from './ViewApps'
 import EditApp from './EditApp';
@@ -19,7 +19,9 @@ function App() {
             <Route exact path="/application-manager/edit/:id" component={EditApp} />
             <Route exact path="/application-manager/" component={NewApp} />
             <Route exact path="/application-manager/not-found" component={NotFound} />
-            <Route path="*" component={NotFound} />
+            <Route path="*">
+              <Redirect push to="/application-manager/not-found" />
+            </Route>
           </Switch>
         </Container>
       </div>
