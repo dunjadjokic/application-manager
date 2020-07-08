@@ -12,7 +12,7 @@ function EditApp1({ prevApp }: { prevApp: Application }) {
 
   const handleEditSubmit = useCallback(() => {
     AppStorageManager.updateApp(app)
-    history.push('/view')
+    history.push('/application-manager/view')
   }, [app, history])
 
 
@@ -29,7 +29,7 @@ type EditAppProps = { match: { params: { id: string } } }
 export default function EditApp({ match }: EditAppProps) {
   const prevApp = AppStorageManager.getApp(match.params.id)
   if (!prevApp) {
-    return (<Redirect push to='/not-found' />)
+    return (<Redirect push to='/application-manager/not-found' />)
   }
   return (<EditApp1 prevApp={prevApp} />)
 }

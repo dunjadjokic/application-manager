@@ -15,10 +15,10 @@ function App() {
         <NavigationBar />
         <Container>
           <Switch>
-            <Route exact path="/view" component={ViewApps} />
-            <Route exact path="/edit/:id" component={EditApp} />
-            <Route exact path="/" component={NewApp} />
-            <Route exact path="/not-found" component={NotFound} />
+            <Route exact path="/application-manager/view" component={ViewApps} />
+            <Route exact path="/application-manager/edit/:id" component={EditApp} />
+            <Route exact path="/application-manager/" component={NewApp} />
+            <Route exact path="/application-manager/not-found" component={NotFound} />
             <Route path="*" component={NotFound} />
           </Switch>
         </Container>

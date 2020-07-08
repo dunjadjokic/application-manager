@@ -17,7 +17,7 @@ const Cards = ({ apps, onDelete }: CardProps) => (
             <div>Email: {app.email}</div>
           </Accordion.Toggle>
           <Button onClick={() => onDelete(app.id)} variant='link'>Delete</Button>
-          <Link to={`/edit/${app.id}`}>Edit</Link>
+          <Link to={`/application-manager/edit/${app.id}`}>Edit</Link>
         </Card.Header>
         <Accordion.Collapse eventKey={i.toString()}>
           <Card.Body>
