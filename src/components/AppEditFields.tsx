@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import { Application } from './AppStorageManager';
 import { EditAppAction } from './EditApplicationState';
 
-function Options() {
+function EnglishLevelOptions() {
   let arrayOptions: number[] = [];
   for (let age = 18; age <= 35; age++) {
     arrayOptions.push(age);
@@ -26,9 +26,11 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         <Form.Label column sm="2">Name </Form.Label>
         <Col sm="10">
           <Form.Control
+            pattern="([A-Z][a-zA-Z]+)(\s([A-Z][a-zA-Z]+))*"
+            required
             type="text"
             value={app.name}
-            placeholder="Enter name"
+            placeholder="Example: Johnny Depp"
             onChange={(e) => dispatch({ type: 'setName', payload: { name: e.target.value } })} />
         </Col>
       </Form.Group>
@@ -37,9 +39,10 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         <Form.Label column sm="2">Email address </Form.Label>
         <Col sm="10">
           <Form.Control
+            required
             type="email"
             value={app.email}
-            placeholder="Enter email"
+            placeholder="Example: johnny@gmail.com"
             onChange={(e) => dispatch({ type: 'setEmail', payload: { email: e.target.value } })} />
         </Col>
       </Form.Group>
@@ -48,10 +51,11 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         <Form.Label column sm="2">Age </Form.Label>
         <Col sm="10">
           <Form.Control
+            required
             as="select"
             value={app.age}
             onChange={e => dispatch({ type: 'setAge', payload: { age: parseInt(e.target.value) } })}>
-            <Options />
+            <EnglishLevelOptions />
           </Form.Control>
         </Col>
       </Form.Group>
@@ -60,9 +64,11 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         <Form.Label column sm="2">Phone number </Form.Label>
         <Col sm="10">
           <Form.Control
+            pattern="[+][0-9]+"
+            required
             type="text"
             value={app.phone}
-            placeholder="Enter phone number"
+            placeholder="Example: +38160123456"
             onChange={(e) => dispatch({ type: 'setPhone', payload: { phone: e.target.value } })} />
         </Col>
       </Form.Group>
@@ -73,6 +79,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
       </Form.Label>
         <Col sm={10}>
           <Form.Check
+            required
             inline
             type="radio"
             label="email"
@@ -98,6 +105,7 @@ export default function AppEditFields({ app, dispatch }: EditProps) {
         <Form.Label as="legend" column sm="2">Available to Start:  </Form.Label>
         <Col sm="10">
           <DatePicker
+            required
             selected={app.startDate}
             onChange={(date: Date) => dispatch({ type: 'setStartDate', payload: { startDate: date } })} />
         </Col>

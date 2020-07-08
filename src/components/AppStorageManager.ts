@@ -23,6 +23,11 @@ export default class AppStorageManager {
     return applications.map(app => ({ ...app, startDate: new Date(app.startDate) }) as Application)
   }
 
+  static getApp(id: string) {
+    const apps = this.getAll()
+    return apps.find(app => app.id === id)
+  }
+
   static addApp(app: Application) {
     const apps = this.getAll()
     apps.push(app)

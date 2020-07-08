@@ -6,6 +6,7 @@ import { Form, Button } from 'react-bootstrap'
 import AppStorageManager from './AppStorageManager'
 
 export default function NewApp() {
+  
   const [app, dispatch] = useReducer(reducer, {
     id: uuidv4(),
     name: '',
@@ -23,6 +24,7 @@ export default function NewApp() {
   const handleSubmit = useCallback(() => {
     AppStorageManager.addApp(app)
   }, [app])
+
   return (
     <Form onSubmit={handleSubmit}>
       <AppEditFields app={app} dispatch={dispatch} />
