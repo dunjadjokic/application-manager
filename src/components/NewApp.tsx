@@ -2,11 +2,11 @@ import React, { useReducer, useCallback } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import AppEditFields from './AppEditFields'
 import { reducer } from './EditApplicationState'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Row } from 'react-bootstrap'
 import AppStorageManager from './AppStorageManager'
 
 export default function NewApp() {
-  
+
   const [app, dispatch] = useReducer(reducer, {
     id: uuidv4(),
     name: '',
@@ -28,7 +28,9 @@ export default function NewApp() {
   return (
     <Form onSubmit={handleSubmit}>
       <AppEditFields app={app} dispatch={dispatch} />
-      <Button variant="primary" type="submit">Submit application</Button>
+      <Row className="justify-content-center">
+        <Button variant="primary" type="submit">Submit application</Button>
+      </Row>
     </Form>
   )
 }

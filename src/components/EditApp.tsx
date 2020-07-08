@@ -1,9 +1,9 @@
-import React, { useReducer, useCallback } from 'react'
+import React, { useCallback, useReducer } from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
+import { Redirect, useHistory } from 'react-router-dom'
 import AppEditFields from './AppEditFields'
 import AppStorageManager, { Application } from './AppStorageManager'
-import { Form, Button } from 'react-bootstrap'
 import { reducer } from './EditApplicationState'
-import { Redirect, useHistory } from 'react-router-dom'
 
 
 function EditApp1({ prevApp }: { prevApp: Application }) {
@@ -19,7 +19,14 @@ function EditApp1({ prevApp }: { prevApp: Application }) {
   return (
     <Form onSubmit={handleEditSubmit}>
       <AppEditFields app={app} dispatch={dispatch} />
-      <Button variant="primary" type="submit">Save changes</Button>
+      <Row className="justify-content-center">
+        <Col md="auto" xs={6}>
+          <Button variant="primary" type="submit">Save changes</Button>
+        </Col>
+        <Col md="auto" xs={6}>
+          <Button variant="primary" type="submit" onClick={() => history.push("/application-manager/view")}>Cancel</Button>
+        </Col>
+      </Row>
     </Form>
   )
 }
