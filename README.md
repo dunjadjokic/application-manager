@@ -1,3 +1,4 @@
+You can view app on [https://dunjadjokic.github.io/application-manager/](https://dunjadjokic.github.io/application-manager/)<br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
